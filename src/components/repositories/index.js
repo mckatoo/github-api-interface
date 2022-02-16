@@ -4,13 +4,14 @@ import * as S from './styled'
 import RepositoryList from '../repository-list'
 
 const RepositoriesContainer = () => {
-  const { githubState, getUserRepos, getUserStarred } = useGithub()
+  const { githubState, getUserRepos, getUserStarred, getUserReposForked } = useGithub()
   const [hasUserForSearchrepos, setHasUserForSearchrepos] = useState(false)
 
   useEffect(() => {
     if (githubState.user.login) {
       getUserRepos(githubState.user.login)
       getUserStarred(githubState.user.login)
+      getUserReposForked(githubState.user.login)
     }
     setHasUserForSearchrepos(githubState.repositories)
 
@@ -28,6 +29,7 @@ const RepositoriesContainer = () => {
           <S.WrapperTabList>
             <S.WrapperTab>Repositories</S.WrapperTab>
             <S.WrapperTab>Starred</S.WrapperTab>
+            <S.WrapperTab>Forked</S.WrapperTab>
           </S.WrapperTabList>
           
           <S.WrapperTabPanel>
@@ -36,6 +38,10 @@ const RepositoriesContainer = () => {
 
           <S.WrapperTabPanel>
             <RepositoryList repos={githubState.starred} />
+          </S.WrapperTabPanel>
+
+          <S.WrapperTabPanel>
+            <RepositoryList repos={githubState.forked} />
           </S.WrapperTabPanel>
           
         </S.WrapperTabs>

@@ -9,6 +9,7 @@ const GithubProvider = ({ children }) => {
     user: {},
     repositories: [],
     starred: [],
+    forked: [],
   })
 
   const getUser = async (username) => {
@@ -26,6 +27,15 @@ const GithubProvider = ({ children }) => {
     }))
   }
 
+  const getUserReposForked = async (username) => {
+    const { data } = await api.get(`users/${username}/repos`)
+    const forked = data.filter((repo) => repo.forks_count > 0)
+    setGithubState((prevState) => ({
+      ...prevState,
+      forked,
+    }))
+  }
+
   const getUserRepos = async (username) => {
     const repositories = (await api.get(`users/${username}/repos`)).data
     setGithubState((prevState) => ({
@@ -39,7 +49,6 @@ const GithubProvider = ({ children }) => {
     const starred = data.filter(
       (repo) => repo.full_name.split('/')[0] === username,
     )
-    console.log('starred', starred)
     setGithubState((prevState) => ({
       ...prevState,
       starred,
@@ -51,6 +60,10 @@ const GithubProvider = ({ children }) => {
     getUser: useCallback((username) => getUser(username), []),
     getUserRepos: useCallback((username) => getUserRepos(username), []),
     getUserStarred: useCallback((username) => getUserStarred(username), []),
+    getUserReposForked: useCallback(
+      (username) => getUserReposForked(username),
+      [],
+    ),
   }
 
   return (

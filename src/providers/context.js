@@ -5,6 +5,7 @@ const GithubContext = createContext({
   user: {},
   repositories: [],
   starred: [],
+  forked: [],
 })
 
 export { GithubContext }
