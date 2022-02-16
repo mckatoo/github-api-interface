@@ -46,9 +46,3 @@ export const WrapperTabPanel = styled(TabPanel)`
   }
 `;
 WrapperTabPanel.tabsRole = "TabPanel";
-
-export const WrapperList = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-`;

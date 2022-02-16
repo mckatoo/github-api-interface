@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, NoSearch, Profile, Repositories } from './components'
+import { Layout, NoSearch, Profile, RepositoriesContainer } from './components'
 import useGithub from './hooks/github-hooks'
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
           ) : (
             <>
               <Profile />
-              <Repositories />
+              <RepositoriesContainer />
             </>
           )}
         </>
