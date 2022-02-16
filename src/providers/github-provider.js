@@ -35,7 +35,11 @@ const GithubProvider = ({ children }) => {
   }
 
   const getUserStarred = async (username) => {
-    const starred = (await api.get(`users/${username}/starred`)).data
+    const { data } = await api.get(`users/${username}/starred`)
+    const starred = data.filter(
+      (repo) => repo.full_name.split('/')[0] === username,
+    )
+    console.log('starred', starred)
     setGithubState((prevState) => ({
       ...prevState,
       starred,
