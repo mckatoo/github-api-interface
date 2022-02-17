@@ -8,7 +8,17 @@ export const Wrapper = styled.div`
   width: 350px;
   height: 150px;
   align-content: center;
-`;
+  align-items: center;
+  text-align: center;
+`
+
+export const WrapperContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+`
 
 export const WrapperTitle = styled.h2`
   font-size: 18px;
@@ -28,4 +38,27 @@ export const WrapperLink = styled.a`
   font-weight: bold;
   margin: 8px 0;
   color: #3182ce;
-`;
+`
+
+export const Counter = styled.a`
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+`
+
+export const WrapperCounters = styled.h2`
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px 0;
+  color: #3182ce;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+`
